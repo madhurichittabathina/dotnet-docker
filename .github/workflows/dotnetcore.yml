@@ -22,6 +22,7 @@ jobs:
     - name: Sonarscanner for dotnet
       uses: Secbyte/dotnet-sonarscanner@v1.2
       with:
+        working-directory: ./samples/dotnetapp
         buildCommand: dotnet build .
         testCommand: dotnet test .
         projectKey: a-project-key
