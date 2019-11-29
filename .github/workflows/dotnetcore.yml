@@ -19,9 +19,22 @@ jobs:
     - name: Build with dotnet
       working-directory: ./samples/dotnetapp
       run: dotnet build --configuration Release
-    - name: SonarCloud Scan
-      uses: sonarsource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
-      
+    - name: dotnet-sonarscanner
+      uses: Secbyte/dotnet-sonarscanner@2.0
+      with:
+        # Command to invoke build
+        buildCommand: dotnet build
+        # Command to invoke tests
+        testCommand:  dotnet test
+        # Specifies the key of the analyzed project in SonarQube
+        projectKey: dotnettest
+        # Specifies the name of the analyzed project in SonarQube
+        projectName: dotnettest
+        # The server URL
+        sonarHostname: https://sonarcloud.io
+        # Organisation
+        sonarOrganisation: raknas999 
+        # Arguments to append to the begin command
+        beginArguments: # optional
+        # Arguments to append to the end command
+        endArguments: # optional
