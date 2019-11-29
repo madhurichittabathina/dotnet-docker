@@ -9,10 +9,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v1
-      working-directory: ./samples/aspnet
     - name: Setup .NET Core
       uses: actions/setup-dotnet@v1
       with:
         dotnet-version: 2.2.108
     - name: Build with dotnet
+      working-directory: ./samples/aspnet
       run: dotnet build --configuration Release
