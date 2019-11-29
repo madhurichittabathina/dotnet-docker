@@ -14,5 +14,5 @@ jobs:
       with:
         dotnet-version: 2.2.108
     - name: Build with dotnet
-      working-directory: ./samples/aspnet
+      working-directory: ./samples/aspnetapp
       run: dotnet build --configuration Release
