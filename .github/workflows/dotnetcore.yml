@@ -19,15 +19,8 @@ jobs:
     - name: Build with dotnet
       working-directory: ./samples/dotnetapp
       run: dotnet build --configuration Release
-    - name: Sonarscanner for dotnet
-      uses: Secbyte/dotnet-sonarscanner@v1.2
-      with:
-        buildCommand: dotnet build ./samples/dotnetapp
-        testCommand: dotnet test ./samples/dotnetapp/tests
-        projectKey: a-project-key
-        projectName: a-project-name
-        sonarOrganisation: raknas999
-        beginArguments: /d:sonar.verbose="true" /d:sonar.cs.opencover.reportsPaths="/path/to/coverage.xml" /d:sonar.coverage.exclusions="**/*.cs"
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@v1.1
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
