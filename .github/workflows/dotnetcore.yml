@@ -25,7 +25,7 @@ jobs:
         buildCommand: dotnet build ./samples/dotnetapp
         testCommand: dotnet test ./samples/dotnetapp/tests
         projectKey: raknas999_dotnet-docker
-        projectName: dotnet-docker
+        projectName: dotnet-docker-cq
         sonarOrganisation: raknas999
         beginArguments: /d:sonar.verbose="true" /d:sonar.cs.opencover.reportsPaths="/path/to/coverage.xml" /d:sonar.coverage.exclusions="**/*.cs"
       env:
