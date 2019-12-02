@@ -31,16 +31,9 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Docker Action
-      uses: zenato/docker-action@v1.0.0
+    - name: Publish to Registry
+      uses: HurricanKai/Publish-Docker-Github-Action@master
       with:
-        # Registry username
-        username: raknas000
-        # Registry password
-        password: Raknas@581
-        # Repository on registry
-        repository: githubactions
-        # Registry hostname
-        registry: # optional
-        # Image tag
-        tag: # 301119
+        name: myDocker/repository
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
