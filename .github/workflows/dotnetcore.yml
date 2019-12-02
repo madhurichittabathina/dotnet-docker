@@ -31,9 +31,19 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    - name: Publish to Registry
-      uses: HurricanKai/Publish-Docker-Github-Action@master
+    - name: Docker Build & Push
+      uses: mr-smithers-excellent/docker-build-push@v1.0
       with:
-        name: myDocker/repository
+        # Name of the Docker image
+        image: dotnet-docker
+        # Tag override for Docker image
+        tag: 1.0
+        # Target Docker registry
+        registry: docker.pkg.github.com
+        # Location of Dockerfile, if not Dockerfile in root directory
+        dockerfile: ./samples/dotnetapp
+        # Docker registry username
         username: ${{ secrets.DOCKER_USERNAME }}
+        # Docker registry password
         password: ${{ secrets.DOCKER_PASSWORD }}
+   
