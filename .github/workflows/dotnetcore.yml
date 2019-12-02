@@ -31,6 +31,10 @@ jobs:
       env:
         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: docker build
+      uses: actions/docker/cli@master
+      with:
+        args: build -t raknas000/dotnet-example ./samples/dotnetapp
     - name: Publish to Registry
       uses: HurricanKai/Publish-Docker-Github-Action@master
       with:
