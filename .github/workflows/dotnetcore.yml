@@ -34,7 +34,7 @@ jobs:
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
-        working-directory: ./samples/dotnetapp
+        dockerfile: ./samples/dotnetapp/Dockerfile
         name: docker.pkg.github.com/elgohr/publish-docker-github-action/publish-docker-github-action
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
