@@ -36,6 +36,6 @@ jobs:
         dockerfile: ./samples/dotnetapp/Dockerfile
         name: docker.pkg.github.com/elgohr/publish-docker-github-action/publish-docker-github-action
         username: ${{ secrets.GITHUB_USERNAME }}
-        password: ${{ secrets.DOCKER_PASSWORD }}
+        password: ${{ secrets.DOCKER_GITHUB_PASSWORD }}
         registry: docker.pkg.github.com
     
