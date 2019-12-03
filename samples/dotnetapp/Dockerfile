@@ -7,7 +7,7 @@ COPY  . ./dotnetapp/
 #COPY  es/dotnetapp/dotnetapp.csproj ./dotnetapp/
 #COPY utils/*.csproj ./utils/
 WORKDIR /app/dotnetapp/samples/dotnetapp
-RUN ls
+#RUN ls
 RUN dotnet restore
 
 # copy and publish app and libraries
@@ -15,7 +15,7 @@ RUN dotnet restore
 #COPY dotnetapp/. ./dotnetapp/
 #COPY utils/. ./utils/
 WORKDIR /app/dotnetapp/samples/dotnetapp/utils
-RUN ls
+#RUN ls
 RUN dotnet publish -c Release -o out
 
 
@@ -28,6 +28,7 @@ ENTRYPOINT ["dotnet", "test", "--logger:trx"]
 
 
 FROM mcr.microsoft.com/dotnet/core/runtime:3.0 AS runtime
-WORKDIR /app
+WORKDIR /app/dotnetapp/out
+RUN ls
 COPY --from=build /app/dotnetapp/out ./
 ENTRYPOINT ["dotnet", "dotnetapp.dll"]
