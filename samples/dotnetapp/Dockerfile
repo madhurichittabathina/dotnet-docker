@@ -2,9 +2,9 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build
 WORKDIR /app
 
 # copy csproj and restore as distinct layers
-COPY  /home/runner/work/dotnet-docker/samples/dotnetapp/dotnetapp.csproj ./dotnetapp/
-COPY  /home/runner/work/dotnet-docker/dotnet-docker/samples/dotnetapp/dotnetapp.csproj ./dotnetapp/
-COPY utils/*.csproj ./utils/
+COPY  . ./dotnetapp/
+#COPY  es/dotnetapp/dotnetapp.csproj ./dotnetapp/
+#COPY utils/*.csproj ./utils/
 WORKDIR /app/dotnetapp
 RUN dotnet restore
 
