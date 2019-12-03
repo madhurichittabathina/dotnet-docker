@@ -11,7 +11,7 @@ RUN ls
 RUN dotnet restore
 
 # copy and publish app and libraries
-WORKDIR /app/
+WORKDIR /app/dotnetapp/samples/dotnetapp/
 COPY dotnetapp/. ./dotnetapp/
 COPY utils/. ./utils/
 WORKDIR /app/dotnetapp
@@ -20,7 +20,7 @@ RUN dotnet publish -c Release -o out
 
 # test application -- see: dotnet-docker-unit-testing.md
 FROM build AS testrunner
-WORKDIR /app/tests
+WORKDIR /app/dotnetapp/samples/dotnetapp/tests
 COPY tests/. .
 ENTRYPOINT ["dotnet", "test", "--logger:trx"]
 
