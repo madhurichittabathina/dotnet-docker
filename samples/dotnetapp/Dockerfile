@@ -28,7 +28,7 @@ ENTRYPOINT ["dotnet", "test", "--logger:trx"]
 
 
 FROM mcr.microsoft.com/dotnet/core/runtime:3.0 AS runtime
-WORKDIR /app/dotnetapp/out
+WORKDIR /app/dotnetapp/samples/dotnetapp
 RUN ls
 COPY --from=build /app/dotnetapp/out ./
 ENTRYPOINT ["dotnet", "dotnetapp.dll"]
