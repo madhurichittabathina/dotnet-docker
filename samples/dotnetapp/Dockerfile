@@ -6,6 +6,7 @@ COPY  . ./dotnetapp/
 #COPY  es/dotnetapp/dotnetapp.csproj ./dotnetapp/
 #COPY utils/*.csproj ./utils/
 WORKDIR /app/dotnetapp
+RUN DIR
 RUN dotnet restore
 
 # copy and publish app and libraries
