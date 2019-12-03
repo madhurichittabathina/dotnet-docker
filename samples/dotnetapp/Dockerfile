@@ -6,7 +6,7 @@ COPY /home/runner/work/dotnet-docker/dotnet-docker/samples/dotnetapp/dotnetapp/d
 COPY  . ./dotnetapp/
 #COPY  es/dotnetapp/dotnetapp.csproj ./dotnetapp/
 #COPY utils/*.csproj ./utils/
-WORKDIR /app/dotnetapp
+WORKDIR /app/dotnetapp/samples/dotnetapp
 RUN ls
 RUN dotnet restore
 
