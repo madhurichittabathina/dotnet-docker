@@ -11,7 +11,7 @@ RUN ls
 RUN dotnet restore
 
 # copy and publish app and libraries
-i#WORKDIR /app/dotnetapp/samples/dotnetapp/
+#WORKDIR /app/dotnetapp/samples/dotnetapp/
 #COPY dotnetapp/. ./dotnetapp/
 #COPY utils/. ./utils/
 WORKDIR /app/dotnetapp/samples/dotnetapp/utils
