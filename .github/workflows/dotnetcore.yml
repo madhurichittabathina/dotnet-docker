@@ -34,7 +34,7 @@ jobs:
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
         dockerfile: ./samples/dotnetapp/Dockerfile
-        name: raknas999/dotnet-docker/dotnet-docker-image
+        name: raknas999/dotnet-docker/dotnet-docker-image:v1
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
         registry: docker.pkg.github.com
