@@ -1,0 +1,42 @@
+name: .NET Core
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: Setup .NET Core
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: 3.0.100
+    - name: dotnet test
+      working-directory: ./samples/dotnetapp/tests
+      run: dotnet test
+    - name: Build with dotnet
+      working-directory: ./samples/dotnetapp
+      run: dotnet build --configuration Release
+    - name: Sonarscanner for dotnet
+      uses: Secbyte/dotnet-sonarscanner@v1.2
+      with:
+        buildCommand: dotnet build ./samples/dotnetapp
+        testCommand: dotnet test ./samples/dotnetapp/tests
+        projectKey: raknas999_dotnet-docker
+        projectName: dotnet-docker-cq
+        sonarOrganisation: raknas999
+        beginArguments: /d:sonar.verbose="true" /d:sonar.cs.opencover.reportsPaths="/path/to/coverage.xml" /d:sonar.coverage.exclusions="**/*.cs"
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: Publish to Registry
+      uses: elgohr/Publish-Docker-Github-Action@master
+      with:
+        dockerfile: ./samples/dotnetapp/Dockerfile
+        name: raknas999/dotnet-docker/dotnet-docker-image:v1
+        username: ${{ secrets.GITHUB_USERNAME }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+        registry: docker.pkg.github.com
+          
+    
